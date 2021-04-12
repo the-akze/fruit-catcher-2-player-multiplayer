@@ -101,11 +101,14 @@ class Game {
 
         }
 
-        if (player.index !== null) {
-            for (var i = 0; i < fruitGroup.length; i++) {
+        if (player.index !== null) 
+        {
+            for (var i = 0; i < fruitGroup.length; i++) 
+            {
                 for (var p = 0; p < players.length; p++)
                 {
-                    if (fruitGroup.get(i).isTouching(players[p])) {
+                    if (fruitGroup.get(i).isTouching(players[p])) 
+                    {
                         fruitGroup.get(i).destroy();
                         if (p == player.index - 1)
                         {
@@ -119,12 +122,33 @@ class Game {
             }
         }
 
+        var ranks = [];
 
+        for (var p in allPlayers)
+        {
+            ranks.push(
+                {
+                    name: allPlayers[p].name,
+                    score: allPlayers[p].score
+                }
+            );
+        }
 
+        ranks = ranks.sort((a, b) => 
+        {
+            return b.score-a.score;
+        });
 
-
-
-
+        var plrIndx = 0;
+        textAlign(LEFT);
+        fill('white');
+        stroke('black');
+        strokeWeight(5);
+        for (var y = 50; y <= 100; y+= 50)
+        {
+            text((plrIndx + 1) + ". " + ranks[plrIndx].name + " - " + ranks[plrIndx].score, 50, y);
+            plrIndx++;
+        }
     }
 
     end() {
