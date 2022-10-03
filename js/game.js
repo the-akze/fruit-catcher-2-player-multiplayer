@@ -69,14 +69,11 @@ class Game {
             }
         }
 
-
-
-
-        if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
+        if (keyIsDown(RIGHT_ARROW) && player.index !== null && player.distance > -450) {
             player.distance -= 10
             player.update();
         }
-        if (keyIsDown(LEFT_ARROW) && player.index !== null) {
+        if (keyIsDown(LEFT_ARROW) && player.index !== null && player.distance < 450) {
             player.distance += 10
             player.update();
         }
